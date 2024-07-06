@@ -1,11 +1,12 @@
-﻿<Window x:Class="WpfApp1.MainWindow"
+﻿<Window x:Class="WpfApp1.Estoned"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Anguish Torment" Height="180" Width="347" Icon="dsd.png">
+        Title="Anguish Torment" Height="180" Width="360" Icon="dsd.png"
+        Background="DarkRed">
     <Grid Margin="0,0,0,5" RenderTransformOrigin="0.5,0.5">
         <Grid.Background>
             <ImageBrush/>
@@ -19,11 +20,11 @@
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="110*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="4,10,0,0" TextWrapping="Wrap" Text="Enter the file which you want to pick a song from." VerticalAlignment="Top" Grid.Column="2" Height="15" Width="321" Grid.ColumnSpan="5"/>
-        <RadioButton x:Name="Hellobutton" Content="Single song" IsChecked="True" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" Grid.Column="2" Height="14" Width="86"/>
+        <TextBlock HorizontalAlignment="Left" Margin="4,10,0,0" TextWrapping="Wrap" Text="Enter the file which you want to lick a song from." VerticalAlignment="Top" Grid.Column="2" Height="15" Width="321" Grid.ColumnSpan="5"/>
+        <RadioButton x:Name="Hellobutton" Content="Single song" IsChecked="True" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top" Grid.Column="2" Height="14" Width="86"/>
         <RadioButton x:Name="Goodbyebutton" Content="6 songs" HorizontalAlignment="Left" Margin="0,71,0,0" VerticalAlignment="Top" Grid.Column="2" Height="14" Width="63"/>
         <Button Content="Pick song" HorizontalAlignment="Left" Margin="4,90,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Column="2" Height="19" Width="59"/>
-        <TextBox HorizontalAlignment="Left" Margin="4,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="inputfilename" TextChanged="inputfilename_TextChanged" Grid.Column="2" Height="17"/>
+        <TextBox HorizontalAlignment="Left" Margin="4,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="inputfilename" TextChanged="InputFilename_TextChanged" Grid.Column="2" Height="17"/>
 
     </Grid>
 </Window>
