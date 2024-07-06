@@ -2,18 +2,12 @@
 
 namespace WpfApp1;
 
-public abstract class Playlist
+public abstract class Playlist(Track[] songs, string listPath)
 {
-    private Track[] _playlist;
-    public int Length;
-    protected string Lpath;
+    private Track[] _playlist = songs;
+    public int Length = songs.Length;
+    protected string Lpath = listPath;
 
-    public Playlist(Track[] songs, string listPath)
-    {
-        _playlist = songs;
-        Length = songs.Length;
-        Lpath = listPath;
-    }
     public abstract Track GetTrack();
     public abstract Track[] GetTracks(int num);
     // TODO:    public abstract Playlist sortBy();
