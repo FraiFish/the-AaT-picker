@@ -18,42 +18,50 @@ public partial class Estoned : Window
     {
         bool success = false;
         string[] songlists = ["b30", "noEX", "byd", "unplayed", "unowned"];
-        IO readFile = new IO();
+        IO readFile = new();
         // changed logic to only if/else the two buttons at the time where songs have to be picked to reduce repetition
         foreach (string cur in songlists)
         {
-            if (cur == inputfilename.Text)
+            if (cur != inputfilename.Text) continue;
+            success = true;
+            // use the edit one if it's unplayed or unowned
+            Playlist newList = readFile.ConvertToPl(cur, cur != "unplayed" && cur != "unowned");
+            if (Hellobutton.IsChecked == true)
             {
-                success = true;
-                // use the edit one if it's unplayed or unowned
-                Playlist newList = readFile.ConvertToPl(cur, (cur != "unplayed" && cur != "unowned"));
-                if (Hellobutton.IsChecked == true)
+                // is it good to format shit on the spot?
+                Track selected = newList.GetTrack();
+                MessageBox.Show(selected.TrackName + " " + selected.TrackDiff, $"Selected from {cur} songlist");
+            }
+            else
+            {
+                switch (Goodbyebutton.IsChecked)
                 {
-                    // is it good to format shit on the spot?
-                    Track selected = newList.GetTrack();
-                    MessageBox.Show(selected.TrackName + " " + selected.TrackDiff, $"Selected from {cur} songlist");
-                }
-                // have to make sure this list has 5 more songs in the first place!
-                else if (Goodbyebutton.IsChecked == true && newList.Length > 5)
-                {
-                    Track[] full = newList.GetTracks(6);
-                    // formatting goes here
-                    String showThis = "";
-                    foreach (Track track in full)
+                    // have to make sure this list has 5 more songs in the first place!
+                    case true when newList.Length > 5:
                     {
-                        showThis += track.TrackName + " " + track.TrackDiff + "\n";
+                        Track[] full = newList.GetTracks(6);
+                        // formatting goes here
+                        string showThis = full.Aggregate("", (current, track) => current + track.TrackName + " " + track.TrackDiff + "\n");
+                        MessageBox.Show(showThis, $"Selected from {cur} songlist");
+                        break;
                     }
-                    MessageBox.Show(showThis, $"Selected from {cur} songlist");
+                    case true:
+                        MessageBox.Show("This list has less than 6 songs in it!", "Error");
+                        break;
                 }
-                else if (Goodbyebutton.IsChecked == true) { MessageBox.Show("This list has less than 6 songs in it!", "Error"); }
             }
         }
-        if (!success){ MessageBox.Show("The file name you entered is invalid!", "Error"); }
+
+        if (!success)
+        {
+            MessageBox.Show("The file name you entered is invalid!", "Error");
+        }
     }
 
     private void inputfilename_TextChanged(object sender, TextChangedEventArgs e)
     {
-        // todo make it play a funny geckronome sound effect and anguish and torment
+        // stop harassing me rider about todos make it play a funny geckronome sound effect and anguish and torment
+        Environment.Exit(1);
     }
 
 }
