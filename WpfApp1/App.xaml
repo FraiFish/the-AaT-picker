@@ -8,7 +8,7 @@
             <Setter Property="Background" Value="DeepPink"></Setter>
         </Style>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontSize" Value="100"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="Foreground" Value="Chartreuse"></Setter>
         </Style>
