@@ -2,11 +2,11 @@
 
 namespace WpfApp1;
 
-public class IO
+public static class Io
 {
-    public static Playlist ConvertToPl(string fileName, bool NoEdit)
+    public static Playlist ConvertToPl(string fileName, bool noEdit)
     {
-        string path = Path.Combine(Directory.GetCurrentDirectory() + @"\songlists\" + fileName + ".txt");
+        string path = Path.Combine($"{Directory.GetCurrentDirectory()}/{fileName}.txt");
         StreamReader stream = new(path);
         string allLines = "";
         int size = 0;
@@ -24,6 +24,7 @@ public class IO
                 //Read the next line
                 line = stream.ReadLine();
             }
+
             //close the file
             stream.Close();
             string[] allSongs = allLines.Split("\n", StringSplitOptions.RemoveEmptyEntries);
@@ -37,11 +38,13 @@ public class IO
             foreach (string s in allSongs)
             {
                 string[] single = s.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-                Track cur = new(single[0], single[1], Convert.ToDouble(single[2]), single[3], single[4], single[5], incr);
+                Track cur = new(single[0], single[1], Convert.ToDouble(single[2]), single[3], single[4], single[5],
+                    incr);
                 tracks[incr++] = cur;
             }
+
             // TODO: conditional here to create Edit or No Edit list
-            if (NoEdit)
+            if (noEdit)
             {
                 NoEditList returnList = new(tracks, path);
                 return returnList;
@@ -56,6 +59,7 @@ public class IO
         {
             Console.WriteLine("Exception: " + e.Message);
         }
+
         // how did you get here
         return fuckedUp;
     }
