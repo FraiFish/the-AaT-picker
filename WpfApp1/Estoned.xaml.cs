@@ -19,11 +19,11 @@ using System.Xml.Linq;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Estoned.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Estoned : Window
     {
-        public MainWindow()
+        public Estoned()
         {
             InitializeComponent();
         }
