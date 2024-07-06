@@ -4,19 +4,17 @@ namespace WpfApp1;
 
 public class IO
 {
-    // I CANNOT make this static what do you mean VS
-    public Playlist ConvertToPl(String fileName, bool NoEdit)
+    public static Playlist ConvertToPl(string fileName, bool NoEdit)
     {
-        string path = System.IO.Path.Combine(Directory.GetCurrentDirectory() + "\\songlists\\" + fileName + ".txt");
+        string path = Path.Combine(Directory.GetCurrentDirectory() + @"\songlists\" + fileName + ".txt");
         StreamReader stream = new(path);
-        string? line;
         string allLines = "";
         int size = 0;
         NoEditList fuckedUp = new([], "anguishandtorment");
         try
         {
             //Read the first line of text
-            line = stream.ReadLine();
+            string? line = stream.ReadLine();
             //Continue to read until you reach end of file
             while (line != null)
             {
@@ -28,7 +26,7 @@ public class IO
             }
             //close the file
             stream.Close();
-            String[] allSongs = allLines.Split("\n", StringSplitOptions.RemoveEmptyEntries);
+            string[] allSongs = allLines.Split("\n", StringSplitOptions.RemoveEmptyEntries);
             Track[] tracks = new Track[size];
             /*
                  turns the string into a playlist.
@@ -36,9 +34,9 @@ public class IO
                  name difficulty cc rating composer charter
                 */
             int incr = 0;
-            foreach (String s in allSongs)
+            foreach (string s in allSongs)
             {
-                String[] single = s.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string[] single = s.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 Track cur = new(single[0], single[1], Convert.ToDouble(single[2]), single[3], single[4], single[5], incr);
                 tracks[incr++] = cur;
             }

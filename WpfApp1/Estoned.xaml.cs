@@ -25,7 +25,7 @@ public partial class Estoned : Window
             if (cur != inputfilename.Text) continue;
             success = true;
             // use the edit one if it's unplayed or unowned
-            Playlist newList = readFile.ConvertToPl(cur, cur != "unplayed" && cur != "unowned");
+            Playlist newList = IO.ConvertToPl(cur, cur != "unplayed" && cur != "unowned");
             if (Hellobutton.IsChecked == true)
             {
                 // is it good to format shit on the spot?
