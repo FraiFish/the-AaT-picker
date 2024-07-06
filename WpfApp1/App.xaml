@@ -5,12 +5,12 @@
              StartupUri="Estoned.xaml">
     <Application.Resources>
         <Style TargetType="{x:Type Window}">
-            <Setter Property="Background" Value="DeepPink"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
         </Style>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="100"/>
-            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
-            <Setter Property="Foreground" Value="Chartreuse"></Setter>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Courier New"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
         </Style>
     </Application.Resources>
 </Application>
