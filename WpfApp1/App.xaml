@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:WpfApp1"
              StartupUri="Estoned.xaml">
     <Application.Resources>
-         
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="Background" Value="DeepPink"></Setter>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="Foreground" Value="Chartreuse"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
