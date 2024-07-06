@@ -2,29 +2,22 @@
 
 public class Track
 {
-    public string trackName;
-    public string trackDiff;
-    public double trackcc;
-    public string trackRating;
-    public string trackComposer;
-    public string? trackCharter;
-    public int trackID;
+    public readonly string TrackName;
+    public readonly string TrackDiff;
+    public double Trackcc;
+    public string TrackRating;
+    public string TrackComposer;
+    public string? TrackCharter;
+    public readonly int TrackId;
     public Track(string name, string diff, double cc, string rating, string composer, string? charter, int id)
     {
-        trackName = name;
-        trackDiff = diff;
-        trackcc = cc;
-        trackRating = rating;
-        trackComposer = composer;
-        if (charter == null)
-        {
-            trackCharter = null;
-        }
-        else
-        {
-            trackCharter = charter;
-        }
-        trackID = id;
+        TrackName = name;
+        TrackDiff = diff;
+        Trackcc = cc;
+        TrackRating = rating;
+        TrackComposer = composer;
+        TrackCharter = charter ?? null;
+        TrackId = id;
     }
     // temporarily removing these because they seemed to be messing with me and I DONT actually know how to define them
     /*

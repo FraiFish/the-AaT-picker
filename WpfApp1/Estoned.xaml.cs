@@ -31,17 +31,17 @@ public partial class Estoned : Window
                 {
                     // is it good to format shit on the spot?
                     Track selected = newList.GetTrack();
-                    MessageBox.Show(selected.trackName + " " + selected.trackDiff, $"Selected from {cur} songlist");
+                    MessageBox.Show(selected.TrackName + " " + selected.TrackDiff, $"Selected from {cur} songlist");
                 }
                 // have to make sure this list has 5 more songs in the first place!
-                else if (Goodbyebutton.IsChecked == true && newList.length > 5)
+                else if (Goodbyebutton.IsChecked == true && newList.Length > 5)
                 {
                     Track[] full = newList.GetTracks(6);
                     // formatting goes here
                     String showThis = "";
                     foreach (Track track in full)
                     {
-                        showThis += track.trackName + " " + track.trackDiff + "\n";
+                        showThis += track.TrackName + " " + track.TrackDiff + "\n";
                     }
                     MessageBox.Show(showThis, $"Selected from {cur} songlist");
                 }

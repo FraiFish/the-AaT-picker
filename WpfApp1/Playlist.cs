@@ -4,15 +4,15 @@ namespace WpfApp1;
 
 public abstract class Playlist
 {
-    private Track[] playlist;
-    public int length;
-    public string lpath;
+    private Track[] _playlist;
+    public int Length;
+    protected string Lpath;
 
     public Playlist(Track[] songs, string listPath)
     {
-        playlist = songs;
-        length = songs.Length;
-        lpath = listPath;
+        _playlist = songs;
+        Length = songs.Length;
+        Lpath = listPath;
     }
     public abstract Track GetTrack();
     public abstract Track[] GetTracks(int num);
@@ -63,22 +63,22 @@ public abstract class Playlist
 }
 public class NoEditList : Playlist
     {
-        private static readonly Random _random = new();
-        private Track[] playlist;
+        private static readonly Random Random = new();
+        private Track[] _playlist;
         public NoEditList(Track[] songs, string listPath) : base(songs, listPath)
         {
-            playlist = songs;
-            length = songs.Length;
-            lpath = listPath;
+            _playlist = songs;
+            Length = songs.Length;
+            Lpath = listPath;
         }
         public override Track GetTrack()
         {
-            return _random.GetItems<Track>(new Span<Track>(playlist), 1)[0];
+            return Random.GetItems<Track>(new Span<Track>(_playlist), 1)[0];
         }
         public override Track[] GetTracks(int num)
         {
             List<int> rand = [];
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < Length; i++)
             {
                 rand.Add(i);
             }
@@ -86,37 +86,37 @@ public class NoEditList : Playlist
             Track[] tempPlaylist = new Track[num];
             for (int i = 0; i < num; i++)
             {
-                int picked = _random.GetItems<int>(new Span<int>([.. rand]), 1)[0];
+                int picked = Random.GetItems<int>(new Span<int>([.. rand]), 1)[0];
                 rand.Remove(picked);
-                tempPlaylist[i] = playlist[picked];
+                tempPlaylist[i] = _playlist[picked];
             }
             return tempPlaylist;
         }
     }
     public class EditList : Playlist
     {
-        private static readonly Random _random = new();
-        private Track[] playlist;
+        private static readonly Random Random = new();
+        private Track[] _playlist;
         public EditList(Track[] songs, string listPath) : base(songs, listPath)
         {
-            playlist = songs;
-            length = songs.Length;
-            lpath = listPath;
+            _playlist = songs;
+            Length = songs.Length;
+            Lpath = listPath;
         }
         public override Track GetTrack()
         {
             // this is basically the logic for removing the track
-            Track picked = _random.GetItems<Track>(new Span<Track>(playlist), 1)[0];
-            List<string> lst = File.ReadAllLines(lpath).ToList();
+            Track picked = Random.GetItems<Track>(new Span<Track>(_playlist), 1)[0];
+            List<string> lst = File.ReadAllLines(Lpath).ToList();
             // identifiers sure are handy
-            lst.RemoveAt(picked.trackID);
-            File.WriteAllLines(lpath, lst);
+            lst.RemoveAt(picked.TrackId);
+            File.WriteAllLines(Lpath, lst);
             return picked;
         }
         public override Track[] GetTracks(int num)
         {
             List<int> rand = [];
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < Length; i++)
             {
                 rand.Add(i);
             }
@@ -124,13 +124,13 @@ public class NoEditList : Playlist
             Track[] tempPlaylist = new Track[num];
             for (int i = 0; i < num; i++)
             {
-                int picked = _random.GetItems<int>(new Span<int>([.. rand]), 1)[0];
-                List<string> lst = File.ReadAllLines(lpath).ToList();
+                int picked = Random.GetItems<int>(new Span<int>([.. rand]), 1)[0];
+                List<string> lst = File.ReadAllLines(Lpath).ToList();
                 // have to index in case the ID is different from its place in the file e.g. the file has already been edited
-                lst.RemoveAt(playlist[picked].trackID);
-                File.WriteAllLines(lpath, lst);
+                lst.RemoveAt(_playlist[picked].TrackId);
+                File.WriteAllLines(Lpath, lst);
                 rand.Remove(picked);
-                tempPlaylist[i] = playlist[picked];
+                tempPlaylist[i] = _playlist[picked];
             }
             return tempPlaylist;
         }
