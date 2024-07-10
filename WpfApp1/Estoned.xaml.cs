@@ -61,6 +61,6 @@ public partial class Estoned : Window
     private void InputFilename_TextChanged(object sender, TextChangedEventArgs e)
     {
         // stop harassing me rider about todos make it play a funny geckronome sound effect and anguish and torment
-        Environment.Exit(1);
+        // Environment.Exit(1);
     }
 }

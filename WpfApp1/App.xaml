@@ -9,7 +9,7 @@
         </Style>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontFamily" Value="Courier New"></Setter>
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
         </Style>
     </Application.Resources>

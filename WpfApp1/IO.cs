@@ -6,7 +6,7 @@ public static class Io
 {
     public static Playlist ConvertToPl(string fileName, bool noEdit)
     {
-        string path = Path.Combine($"{Directory.GetCurrentDirectory()}/{fileName}.txt");
+        string path = Path.Combine($"{Directory.GetCurrentDirectory()}\\songlists/{fileName}.txt");
         StreamReader stream = new(path);
         string allLines = "";
         int size = 0;
